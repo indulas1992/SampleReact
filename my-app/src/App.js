@@ -1,21 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import SimpleForm from './SimpleForm/SimpleForm';
 
+const App = (props) => {
+  let [showChat, setShowChat] = useState(false);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hellooo Ram!!
-        </p>
-      </header>
-      <Person age="27"></Person>
-    </div>
-  );
+  const startChat = () => { setShowChat(true); }
+  const hideChat = () => { setShowChat(false); }
+
+    return (
+      <>
+      <div className = "header">
+        <h2>My Application!!!</h2>
+      </div>
+      <div className = "main">
+        <div className ="nav">
+          <h3>My Navigation</h3>
+        </div>
+        <div className ="content">
+          <div style = {{padding:"20px"}}>
+            <h1>Content of my application will go here.....</h1>
+            <p>Sample content to fill the gap as much as possible. Sample content to fill the gap as much as possible.
+            Sample content to fill the gap as much as possible.Sample content to fill the gap as much as possible.</p>
+            <p>More content to fill the available area of the main contect. More content to fill the available area of the main contect.
+            More content to fill the available area of the main contect.More content to fill the available area of the main contect. </p>
+          </div>
+        </div>
+      </div>
+      <div className = "footer">Footer</div>
+      <div className = "bot">
+        <div style ={{display: showChat ? "" : "none"}}>
+          <SimpleForm></SimpleForm>
+        </div>      
+        {/* <div> {showChat ? <SimpleForm></SimpleForm> : null} </div> */}
+        <div>
+          {!showChat 
+            ? <button className="btn" onClick={() => startChat()}>click to chat... </button> 
+            : <button className="btn" onClick={() => hideChat()}>click to hide... </button>}
+        </div>
+      </div>      
+      </>
+    )
 }
 
 export default App;
