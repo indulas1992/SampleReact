@@ -7,8 +7,17 @@ const App = (props) => {
 
   const startChat = () => { setShowChat(true); }
   const hideChat = () => { setShowChat(false); }
+  const [testArray, setTestArray] = useState([{name:"Indu", key:1}, {name:"Ram", key:2}]);
+  const addUser = () => {
+    setTestArray(testArray.concat({name:"Sunil", key:3}));
+  }
+
+   const button  = 
+        <button type="submit" className="btn nav-btn-red" onClick={addUser}>SIGN UP</button>  ;
+  // let testArray = [{name:"Indu", "no":1}, {name:"Ram", "no":2}]    
 
     return (
+      
       <>
       <div className = "header">
         <h2>My Application!!!</h2>
@@ -38,6 +47,9 @@ const App = (props) => {
             ? <button className="btn" onClick={() => startChat()}>click to chat... </button> 
             : <button className="btn" onClick={() => hideChat()}>click to hide... </button>}
         </div>
+          <div>{!showChat ? button : null}</div>
+
+          <div>{!showChat ? testArray.map(x=><p>{x.name}</p>) : null}</div>
       </div>      
       </>
     )
